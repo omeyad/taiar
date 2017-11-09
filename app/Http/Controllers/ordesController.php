@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class postController extends Controller
+class ordesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +13,9 @@ class postController extends Controller
      */
     public function index()
     {
-        $arr=array(['title'=>'post1','content'=>'text1 text1 text1 text1 text1 ','comment'=>['swdfghjk','wertyuio']],
-            ['title'=>'post2','content'=>'text2 text2 text2 text2 text2 ','comment'=>['swdfghjk','wertyuio']],
-            ['title'=>'post2','content'=>'text3 text3 text1 text3 text3 ','comment'=>['swdfghjk','wertyuio']]);
-
-        return view('posts.index',['posts'=>$arr]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *

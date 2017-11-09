@@ -22,6 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('post', 'postController');
 
 Route::resource('contacts', 'contactController');
+Route::resource('delivaries', 'delivariesController');
+
+
 //Route::get('contacts/contactList', 'contactController.index');
 
 //Route::get('/contacts', 'contactController@index');

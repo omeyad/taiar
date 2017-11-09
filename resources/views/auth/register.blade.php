@@ -10,7 +10,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('delivaries.store') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -61,7 +61,7 @@
                             <label for="phone" class="col-md-4 control-label">العنوان</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="tel" class="form-control" name="phone" value="{{ old('address') }}" required autofocus>
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autofocus>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -85,11 +85,11 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('birthDate') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">تاريخ الميلاد</label>
 
                             <div class="col-md-6">
-                                <input id="birthDate" type="date" class="form-control" name="nid" value="{{ old('birthDate') }}" required autofocus>
+                                <input id="birthDate" type="date" class="form-control" name="birthDate" value="{{ old('birthDate') }}" required autofocus>
 
                                 @if ($errors->has('birthDate'))
                                     <span class="help-block">
@@ -103,9 +103,9 @@
                             <label for="name" class="col-md-4 control-label"> المهنة الاساسية</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('job') }}" required autofocus>
+                                <input id="job" type="text" class="form-control" name="job" value="{{ old('job') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('job'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('job') }}</strong>
                                     </span>
