@@ -2,28 +2,60 @@
 
 namespace App\Http\Controllers;
 
+Use App\Supplier;
+Use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class suppliersController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
     /**
-     * Display a listing of the resource.
+     * Where to redirect users after registration.
      *
-     * @return \Illuminate\Http\Response
+     * @var string
      */
-    public function index()
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        //
+        $this->middleware('guest');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get a validator for an incoming registration request.
      *
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create()
+    protected function validator(array $data)
     {
-        //
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'field' => 'required|string|max:255',
+            'phone' => 'required|string|max:14',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
     }
 
     /**
@@ -34,7 +66,23 @@ class suppliersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+        $user=new User;
+        $user->email=$data['email'];
+        $user->type=1;
+        $user->password=bcrypt($data['password']);
+        $user->save();
+
+        $supplier=new Supplier;
+        $supplier->name=$data['name'];
+        $supplier->phone=$data['phone'];
+        $supplier->address=$data['address'];
+        $supplier->field=$data['field'];
+        $supplier->user_id=$user->id;
+
+        $supplier->save();
+        // $post->save();
+
     }
 
     /**

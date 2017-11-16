@@ -3,6 +3,7 @@
 @section('content')
     <div class="panel-body">
         <h3 style="font-size: 2em;color:#f5f5f5">
-            مرحبا بك         </h3>  </div>
+سنتواصل معك لاحقا لاستكمال اجرائات تسجيلك كطيار معنا ... وشكرا!
+        </h3>  </div>
 
 @endsection

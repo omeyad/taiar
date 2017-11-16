@@ -15,14 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('delivary', function () {
+    return view('delivary');
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/homepage', 'postController@index');
-Route::resource('post', 'postController');
-
+Route::get('/home', 'HomeController@index');
 Route::resource('contacts', 'contactController');
 Route::resource('delivaries', 'delivariesController');
+Route::resource('suppliers', 'suppliersController');
 
 
 //Route::get('contacts/contactList', 'contactController.index');
