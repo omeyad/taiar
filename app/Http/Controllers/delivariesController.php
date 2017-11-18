@@ -19,7 +19,10 @@ class delivariesController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    public function index()
+    {
+        return view('auth.registerDelivary');
+    }
     use RegistersUsers;
 
     /**

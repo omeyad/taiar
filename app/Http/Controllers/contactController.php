@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Contact;
 use Illuminate\Support\Facades\Auth;
 
+
 class contactController extends Controller
 {
     public function index()

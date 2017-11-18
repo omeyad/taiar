@@ -21,6 +21,7 @@ class suppliersController extends Controller
     |
     */
 
+
     use RegistersUsers;
 
     /**
@@ -30,6 +31,10 @@ class suppliersController extends Controller
      */
     protected $redirectTo = '/home';
 
+    public function index()
+    {
+        return view('auth.registerSupplier');
+    }
     /**
      * Create a new controller instance.
      *

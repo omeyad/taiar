@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\DeliveryType;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
 
-class ordesController extends Controller
+class ordersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +16,12 @@ class ordesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $DeliveryTypeValue = DB::table('DeliveryTypes')->get();
+        return view('order.add')->with('DeliveryTypeList' , $DeliveryTypeValue);
 
+
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -32,9 +38,30 @@ class ordesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'orderName' => 'required',
+            'direction' => 'required',
+            'orderTime' => 'required',
+            'dType' => 'required',
+        ]);
+
+        //store
+        $data=$request->all();
+        $order=new Order;
+        $order->description=$data['orderName'];
+        $order->delivary_type_forginKey=$data['dType'];
+        $order->allowedTime=$data['orderTime'];
+        $order->direction=$data['direction'];
+        // $order->supplier_forginKey=Auth::id();
+        $order->save();
+
+        //redirect
+        return back()->with('success','POST ADDED SUCCESSEFULY');
+
+
     }
 
     /**
@@ -56,7 +83,7 @@ class ordesController extends Controller
      */
     public function edit($id)
     {
-        //
+//
     }
 
     /**

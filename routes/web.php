@@ -21,10 +21,14 @@ Route::get('delivary', function () {
 
 Auth::routes();
 
+Route::get('/delivaryRegister', 'delivariesController@index');
+Route::get('/supplierRegister', 'suppliersController@index');
 Route::get('/home', 'HomeController@index');
 Route::resource('contacts', 'contactController');
 Route::resource('delivaries', 'delivariesController');
 Route::resource('suppliers', 'suppliersController');
+Route::resource('orders', 'ordersController');
+
 
 
 //Route::get('contacts/contactList', 'contactController.index');
