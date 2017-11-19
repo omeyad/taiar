@@ -18,7 +18,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div style="margin-top: -20px;">
+    <div>
         <nav class="navbar navbar-inverse bg-inverse">
             <div class="container">
                 <div class="navbar-header">

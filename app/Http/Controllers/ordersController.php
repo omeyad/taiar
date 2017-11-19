@@ -16,7 +16,8 @@ class ordersController extends Controller
      */
     public function index()
     {
-        $DeliveryTypeValue = DB::table('DeliveryTypes')->get();
+
+        $DeliveryTypeValue =  DB::table('DeliveryTypes')->select('id', 'dname')->get();
         return view('order.add')->with('DeliveryTypeList' , $DeliveryTypeValue);
 
 
@@ -27,9 +28,17 @@ class ordersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function view()
     {
-        //
+        $ordersList=DB::table('orders')
+            ->join('suppliers', 'orders.supplier_forginKey', '=', 'suppliers.id')
+            ->join('DeliveryTypes', 'orders.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->select('DeliveryTypes.dname', 'suppliers.name', 'orders.description', 'orders.direction', 'orders.allowedTime')
+            ->get();
+
+        return view('order.ordersList')->with('ordersList' , $ordersList);
+
+
     }
 
     /**
@@ -59,7 +68,7 @@ class ordersController extends Controller
         $order->save();
 
         //redirect
-        return back()->with('success','POST ADDED SUCCESSEFULY');
+        return back()->with('success','تم الطلب بنجاح');
 
 
     }

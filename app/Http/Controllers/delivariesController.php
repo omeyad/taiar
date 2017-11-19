@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 Use App\Delivary;
 Use App\User;
+use App\DeliveryType;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -75,6 +77,7 @@ class delivariesController extends Controller
         $user->email=$data['email'];
         $user->type=0;
         $user->password=bcrypt($data['password']);
+        $user->name=$data['name'];
         $user->save();
 
         $delivary=new Delivary;
@@ -98,6 +101,20 @@ class delivariesController extends Controller
      */
     public function show($id)
     {
+        //
+    }
+    public function view()
+    {
+        $ordersList=DB::table('orders')
+            ->join('suppliers', 'orders.supplier_forginKey', '=', 'suppliers.id')
+            ->join('DeliveryTypes', 'orders.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->select('DeliveryTypes.dname', 'suppliers.name', 'orders.description', 'orders.direction', 'orders.allowedTime')
+            ->get();
+
+        $data=Delivary::orderBy('updated_at','desc')->get();
+
+        return view('delivaryprofile',['allDeliveries'=>$data]);
+
         //
     }
 

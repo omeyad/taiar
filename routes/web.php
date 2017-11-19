@@ -28,6 +28,16 @@ Route::resource('contacts', 'contactController');
 Route::resource('delivaries', 'delivariesController');
 Route::resource('suppliers', 'suppliersController');
 Route::resource('orders', 'ordersController');
+Route::get('ordersList', 'ordersController@view');
+
+Route::get('temp', function () {
+    return view('layouts.template');
+});
+Route::get('temp1', function () {
+    return view('layouts.template1');
+});
+Route::get('delivaryProfile', 'delivariesController@view');
+
 
 
 

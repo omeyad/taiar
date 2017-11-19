@@ -83,7 +83,7 @@
 
                 <div class="form-group">
 
-                    <input type="submit" value="دخول">
+                    <input type="submit" value="اطلب">
 
                 </div>
             </form>

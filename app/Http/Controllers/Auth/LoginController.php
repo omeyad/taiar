@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class LoginController extends Controller
 {
@@ -18,6 +21,7 @@ class LoginController extends Controller
     |
     */
 
+
     use AuthenticatesUsers;
 
     /**
@@ -25,13 +29,34 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+    protected function authenticate(Request $request,$User)
+    {
+              if($User->type==1)
+              {
+
+                  return redirect('/order.ordersList');
+
+              }
+
+        if($User->type==0)
+        {
+            $DeliveryTypeValue =  DB::table('delivaries')->select('status')->where('user_id', $User->id)->get();
+           if($DeliveryTypeValue==1) {
+                            return redirect('/delivarieProfile');
+           }
+
+        }
+
+
+
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
