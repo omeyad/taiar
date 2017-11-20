@@ -41,15 +41,15 @@ class LoginController extends Controller
               if($User->type==1)
               {
 
-                  return redirect('/order.ordersList');
+                  return redirect('/ordersList');
 
               }
 
         if($User->type==0)
         {
-            $DeliveryTypeValue =  DB::table('delivaries')->select('status')->where('user_id', $User->id)->get();
+           $DeliveryTypeValue =  DB::table('delivaries')->select('status')->where('user_id', $User->id)->get();
            if($DeliveryTypeValue==1) {
-                            return redirect('/delivarieProfile');
+                      return redirect('/delivarieProfile');
            }
 
         }
