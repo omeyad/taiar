@@ -78,9 +78,7 @@ class suppliersController extends Controller
         $user->password=bcrypt($data['password']);
         $user->name=$data['name'];
         $user->save();
-
         $supplier=new Supplier;
-        $supplier->name=$data['name'];
         $supplier->phone=$data['phone'];
         $supplier->address=$data['address'];
         $supplier->field=$data['field'];

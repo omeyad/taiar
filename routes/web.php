@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('delivary', function () {
@@ -29,6 +29,7 @@ Route::resource('delivaries', 'delivariesController');
 Route::resource('suppliers', 'suppliersController');
 Route::resource('orders', 'ordersController');
 Route::get('ordersList', 'ordersController@view');
+Route::get('delivaryList', 'delivariesController@viewList');
 
 Route::get('temp', function () {
     return view('layouts.template');

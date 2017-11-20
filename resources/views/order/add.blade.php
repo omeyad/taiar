@@ -1,8 +1,69 @@
-@extends('layouts.app')
-
+@extends('layouts.temp')
+@section('pageTitle')
+قولنا تفاصيل اوردرك
+@endsection
 @section('content')
+				<!-- Search -->
+		<div class="advanced-search color" id="booking" style="margin-top:10%">
+			<div class="wrap">
+				 @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+            <form class="form-horizontal" method="POST" action="{{ route('orders.store') }}">
+					<!-- Row -->
+					<div class="f-row" style="text-align:right">
+						<div class="form-group datepicker one-third">
+							<label for="dep-date">وقت التوصيل</label>
+							<input type="time"  class="form-control" id="dep-date" name="orderTime" value="{{ old('orderTime') }}" required/>
+						</div>
+						<div class="form-group select one-third">
+							<label>طريقة التوصيل</label>
+                            <select id="dType"  class="form-control" name="dType"  required autofocus>
 
-        <div class="panel-heading"><h2>تفاصيل اوردك</h2></div>
+                          @foreach($DeliveryTypeList as $DeliveryTypeItem)
+                            <option value="{{$DeliveryTypeItem->id}}">{{$DeliveryTypeItem->dname}}</option>
+                            @endforeach
+
+                        </select>
+						</div>
+						<div class="form-group select one-third">
+							<label>العنوان</label>
+							  <input id="direction" type="text" class="form-control" name="direction" value="{{ old('direction') }}" required autofocus>
+
+                        @if ($errors->has('direction'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('direction') }}</strong>
+                                    </span>
+                        @endif
+						</div>
+					</div>
+                					<row>
+
+                <div class="form-group datepicker one-third  col-md-6" style="float:right">
+							<label>وصف الاوردر</label>
+                    <textarea row=2 style="height:100px" id="orderName" type="text" class="form-control" name="orderName" value="{{ old('orderName') }}" required autofocus></textarea>
+
+                        @if ($errors->has('direction'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('direction') }}</strong>
+                                    </span>
+                        @endif
+                </div>
+						<div class="form-group datepicker one-third  col-md-6" style="margin-top:5%">
+							<button type="submit" class="btn large black">اطلب</button>
+						</div>
+						</row>
+					<!-- //Row -->
+					
+				
+				</form>
+			</div>
+		</div>
+		<!-- //Search -->
+
+     {{--   <div class="panel-heading"><h2>تفاصيل اوردك</h2></div>
 
         <div class="panel-body">
             @if(Session::has('success'))
@@ -90,5 +151,5 @@
         </div>
 
 
-
+--}}
 @endsection

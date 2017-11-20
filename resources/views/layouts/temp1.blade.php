@@ -14,13 +14,16 @@
 
     <link rel="stylesheet" href="{{asset('css/styler.css')}}" />
     <link rel="stylesheet" href="{{asset('css/theme-pink.css')}}"  id="template-color" />
-    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}" />
     <link rel="stylesheet" href="{{asset('css/pinkstyle.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}" />
     <link rel="stylesheet" href="{{asset('css/animate.css')}}" />
     <link rel="stylesheet" href="{{asset('css/icons.css')}}" />
-    <link rel="stylesheet" href="'http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700'" />
+    <link rel="stylesheet" href="{{asset('http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700')}}" />
     <link rel="stylesheet" href="{{asset('images/favicon.ico')}}" />
     <link href="{{ asset('css/bootstrap-rtl.min.css') }}" rel="stylesheet">
+
+
+
     <script src="{{asset('js/e808bf9397.js')}}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,9 +34,8 @@
     <![endif]-->
 </head>
 
-<body class="home">
+<body style="font-family:aldhabi">
 <!-- Preloader -->
-<!--
 <div class="preloader">
 <div id="followingBallsG">
 <div id="followingBallsG_1" class="followingBallsG"></div>
@@ -42,7 +44,6 @@
 <div id="followingBallsG_4" class="followingBallsG"></div>
 </div>
 </div>
--->
 <!-- //Preloader -->
 
 <!-- Header -->
@@ -59,6 +60,8 @@
         <!-- Main Nav -->
         <nav role="navigation" class="main-nav">
             <ul>
+
+
 
 
 @guest
@@ -80,7 +83,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            خروج
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -91,9 +94,6 @@
                             </li>
                         @endguest
 
-
-
-              
 
                 <li><a href="contact.html" title="Contact" style="font-size: 20px;">اتصل بنا </a></li>
 
@@ -111,23 +111,30 @@
 <!-- Main -->
 
     <!-- Page info -->
-    <header class="site-title color">
-        <div class="wrap">
-            <div class="container">
-                <h1 style="float:right;margin-top:30px"> @yield('pageTitle')</h1>
-                
-    </header>
+    {{--<header class="site-title color">--}}
+        {{--<div class="wrap">--}}
+            {{--<div class="container">--}}
+                {{--<h1>Register</h1>--}}
+                {{--<nav role="navigation" class="breadcrumbs">--}}
+                    {{--<ul>--}}
+                        {{--<li><a href="index-2.html" title="Home">Home</a></li>--}}
+                        {{--<li>Register</li>--}}
+                    {{--</ul>--}}
+                {{--</nav>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</header>--}}
     <!-- //Page info -->
 
-    <main class="main" role="main">
+
 
 
                    @yield('content');
-</Main>
+
 <!-- //Main -->
 
 <!-- Footer -->
-	<footer class="footer black" role="contentinfo">
+		<footer class="footer black" role="contentinfo">
     <div class="wrap">
         <div class="row">
             <!-- Column -->
@@ -192,16 +199,12 @@
 <!-- //Footer -->
 
 <!-- jQuery -->
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/jquery-ui.min.js')}}"></script>
-<script src="{{asset('js/jquery-ui-timepicker-addon.js')}}"></script>
+<script src={{asset('js/jquery.min.js')}}></script>
 <script src="{{asset('js/jquery.uniform.min.js')}}"></script>
 <script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
 <script src="{{asset('js/wow.min.js')}}"></script>
-<script src="{{asset('js/jquery-ui-sliderAccess.js')}}"></script>
-<script src="{{asset('js/search.js')}}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
-	
+<script src="{{asset('js/scripts.js')}}"></script>
 
 <!-- TEMPLATE STYLES -->
 <div id="template-styles">
@@ -231,5 +234,4 @@
 </body>
 
 <!-- Mirrored from themeenergy.com/themes/html/transfers/register.html by HTTrack Website Copier/3.x [XR&CO'2010], Sat, 18 Nov 2017 09:04:42 GMT -->
-
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 Use App\Delivary;
 Use App\User;
+use Illuminate\Support\Facades\DB;
 use App\DeliveryType;
 use App\Order;
 use Illuminate\Http\Request;
@@ -81,7 +82,6 @@ class delivariesController extends Controller
         $user->save();
 
         $delivary=new Delivary;
-        $delivary->name=$data['name'];
         $delivary->phone=$data['phone'];
         $delivary->address=$data['address'];
         $delivary->job=$data['job'];
@@ -102,18 +102,37 @@ class delivariesController extends Controller
     public function show($id)
     {
         //
+          
+        $data=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')->where('delivaries.id','=',$id)
+            ->get();
+
+       
+       // $data=Delivary::orderBy('updated_at','desc')->get();
+
+        return view('profile.delivery',['Delivery'=>$data]);
     }
     public function view()
     {
-        $ordersList=DB::table('orders')
-            ->join('suppliers', 'orders.supplier_forginKey', '=', 'suppliers.id')
-            ->join('DeliveryTypes', 'orders.delivary_type_forginKey', '=', 'DeliveryTypes.id')
-            ->select('DeliveryTypes.dname', 'suppliers.name', 'orders.description', 'orders.direction', 'orders.allowedTime')
+        
+      
+
+        //
+    }
+       public function viewList()
+    {
+        
+        
+        $data=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','users.id')
             ->get();
+       // $data=Delivary::orderBy('updated_at','desc')->get();
+        return view('profile.delivery',['allDeliveries'=>$data]);
 
-        $data=Delivary::orderBy('updated_at','desc')->get();
-
-        return view('delivaryprofile',['allDeliveries'=>$data]);
 
         //
     }
@@ -150,5 +169,12 @@ class delivariesController extends Controller
     public function destroy($id)
     {
         //
+      
+      
+        $data=DB::table('users')->where(
+            'id','=' ,$id
+        )->delete();
+        return back();
+
     }
 }
