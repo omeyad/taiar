@@ -108,6 +108,9 @@ class delivariesController extends Controller
             ->join('users', 'users.id', '=', 'delivaries.user_id')
             ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')->where('delivaries.id','=',$id)
             ->get();
+//            $orders = DB::table('orders')
+//                ->where('delivary_forginKey.id','=',$id)
+//                ->count();
 
        
        // $data=Delivary::orderBy('updated_at','desc')->get();
@@ -128,10 +131,10 @@ class delivariesController extends Controller
         $data=DB::table('delivaries')
             ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
             ->join('users', 'users.id', '=', 'delivaries.user_id')
-            ->select('DeliveryTypes.dname','users.name','users.id')
+            ->select('DeliveryTypes.dname','users.name','delivaries.id')
             ->get();
        // $data=Delivary::orderBy('updated_at','desc')->get();
-        return view('profile.delivery',['allDeliveries'=>$data]);
+        return view('admin.delivaryList',['allDeliveries'=>$data]);
 
 
         //
