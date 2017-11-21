@@ -554,7 +554,8 @@ input[type="email"],
 input[type="text"],
 input[type="number"],
 input[type="password"],
-textarea 					{display:block;padding:12px 15px; font-size:15px;width:100%;border:1px solid #DFDFD0;color:#34394A;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+input[type="time"],
+textarea 					{display:block;padding:12px 15px; font-size:15px;width:100%;border:1px solid #DFDFD0;color:#34394A;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-align: right}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {-webkit-appearance: none; margin: 0; }
@@ -665,7 +666,7 @@ input[type="search"]:active 			{-moz-appearance: none;-webkit-appearance: none; 
 
 /* Select */
 div.selector		 				{border:1px solid #DFDFD0;line-height:48px;height:48px;position: relative;overflow: hidden;width:100% !important;padding-left:15px;background:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-div.selector span 				{position:relative;text-overflow: ellipsis;display: block;overflow: hidden;white-space: nowrap;height:48px;line-height:48px;background:#fff;cursor: pointer;width: 100% !important;padding-right:30px;}
+div.selector span 				{text-align: right; position:relative;text-overflow: ellipsis;display: block;overflow: hidden;white-space: nowrap;height:48px;line-height:48px;background:#fff;cursor: pointer;width: 100% !important;padding-right:30px;}
 div.selector span:before			{content:"";position:absolute;top:21px;right:15px;width: 0;height: 0;border-style: solid;border-width: 7px 7px 0 7px;border-color: #ccc transparent transparent transparent;}
 div.selector select 				{opacity: 0;filter: alpha(opacity=0);-moz-opacity: 0;border: none;background: none;position: absolute;height:48px;top:0;left:0;width: 100%;}
 div.selector.active,

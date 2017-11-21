@@ -114,7 +114,7 @@
     <header class="site-title color">
         <div class="wrap">
             <div class="container">
-                <h1 style="float:right;margin-top:30px"> @yield('pageTitle')</h1>
+                <h1 style="float:right;margin-top:30px"> توصيلتك عندنا :: @yield('pageTitle')</h1>
                 
     </header>
     <!-- //Page info -->
