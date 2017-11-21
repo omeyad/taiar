@@ -24,9 +24,10 @@ class delivariesController extends Controller
     */
     public function index()
     {
-         $DeliveryTypeValue =  DB::table('DeliveryTypes')->select('id', 'dname')->get();
+          $DeliveryTypeValue =  DB::table('DeliveryTypes')->select('id', 'dname')->get();
         return view('auth.registerDelivary')->with('DeliveryTypeList' , $DeliveryTypeValue);
-       
+        
+        
     }
     use RegistersUsers;
 
@@ -129,14 +130,22 @@ class delivariesController extends Controller
        public function viewList()
     {
         
-        
-        $data=DB::table('delivaries')
+       
+         $data=DB::table('delivaries')
             ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
             ->join('users', 'users.id', '=', 'delivaries.user_id')
-            ->select('DeliveryTypes.dname','users.name','delivaries.id')
+            ->select('DeliveryTypes.dname','users.name','delivaries.id','delivaries.status')->where('delivaries.status',1)
             ->get();
+           $data1=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','delivaries.id','delivaries.status')->where('delivaries.status',0)
+            ->get();
+           
        // $data=Delivary::orderBy('updated_at','desc')->get();
-        return view('admin.delivaryList',['allDeliveries'=>$data]);
+        return view('admin.delivaryList',['allDeliveries'=>$data],['allDeliveries1'=>$data1]);
+           
+      
 
 
         //
@@ -160,9 +169,26 @@ class delivariesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $data1=DB::table('delivaries')
+            ->where('id',$id)
+            ->update(['status'=> 1]);
+       
+ $data=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','delivaries.id','delivaries.status')->where('delivaries.status',1)
+            ->get();
+           $data1=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','delivaries.id','delivaries.status')->where('delivaries.status',0)
+            ->get();
+           
+       // $data=Delivary::orderBy('updated_at','desc')->get();
+        return view('admin.delivaryList',['allDeliveries'=>$data],['allDeliveries1'=>$data1]);
+       
     }
 
     /**

@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('delivary', function () {
-    return view('delivary');
-});
 
 Auth::routes();
 
@@ -30,13 +27,6 @@ Route::resource('suppliers', 'suppliersController');
 Route::resource('orders', 'ordersController');
 Route::get('ordersList', 'ordersController@view');
 Route::get('delivaryList', 'delivariesController@viewList');
-
-Route::get('temp', function () {
-    return view('layouts.template');
-});
-Route::get('temp1', function () {
-    return view('layouts.template1');
-});
 Route::get('delivaryProfile', 'delivariesController@view');
 
 
