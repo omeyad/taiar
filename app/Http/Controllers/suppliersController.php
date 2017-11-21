@@ -85,6 +85,8 @@ class suppliersController extends Controller
         $supplier->user_id=$user->id;
 
         $supplier->save();
+         return redirect('/orders');
+
         // $post->save();
 
     }

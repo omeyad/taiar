@@ -37,17 +37,22 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('Delivery') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('Delivery_type_id') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-3 control-label">امكانية التوصيل</label>
 
                             <div class="col-md-8">
-                                <select id="Delivery" class="form-control" name="Delivery" value="{{ old('Delivery') }}" required autofocus>
-                                    <option value="1">موتوسكيل</option>
-                                    <option value="2">سيارة</option>
+                                <select id="Delivery" class="form-control" name="Delivery_type_id" value="{{ old('Delivery_type_id') }}" required autofocus>
+                                   
+                                    
+                                   @foreach($DeliveryTypeList as $DeliveryTypeItem)
+                            <option value="{{$DeliveryTypeItem->id}}">{{$DeliveryTypeItem->dname}}</option>
+                            @endforeach
+                                    
+                                    
                                 </select>
                                 @if ($errors->has('Delivery'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('Delivery') }}</strong>
+                                        <strong>{{ $errors->first('Delivery_type_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

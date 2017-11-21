@@ -24,7 +24,9 @@ class delivariesController extends Controller
     */
     public function index()
     {
-        return view('auth.registerDelivary');
+         $DeliveryTypeValue =  DB::table('DeliveryTypes')->select('id', 'dname')->get();
+        return view('auth.registerDelivary')->with('DeliveryTypeList' , $DeliveryTypeValue);
+       
     }
     use RegistersUsers;
 
@@ -86,7 +88,7 @@ class delivariesController extends Controller
         $delivary->address=$data['address'];
         $delivary->job=$data['job'];
         $delivary->nid=$data['nid'];
-        $delivary->delivary=$data['Delivery'];
+        $delivary->delivary_type_forginKey=$data['Delivery_type_id'];
         $delivary->birthDate=$data['birthDate'];
         $delivary->user_id=$user->id;
         $delivary->save();
@@ -108,14 +110,14 @@ class delivariesController extends Controller
             ->join('users', 'users.id', '=', 'delivaries.user_id')
             ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')->where('delivaries.id','=',$id)
             ->get();
-//            $orders = DB::table('orders')
-//                ->where('delivary_forginKey.id','=',$id)
-//                ->count();
+            $orders = DB::table('orders')
+                ->where('delivary_forginKey','=',$id)
+                ->count();
 
-       
+
        // $data=Delivary::orderBy('updated_at','desc')->get();
 
-        return view('profile.delivery',['Delivery'=>$data]);
+        return view('profile.delivery',['Delivery'=>$data,'ordersNo'=>$orders]);
     }
     public function view()
     {

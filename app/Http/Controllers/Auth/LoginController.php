@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
-
+use DB;
 class LoginController extends Controller
 {
     /*
@@ -20,7 +17,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
 
     use AuthenticatesUsers;
 
@@ -36,23 +32,34 @@ class LoginController extends Controller
      *
      * @return void
      */
-    protected function authenticate(Request $request,$User)
+
+
+        protected function authenticated(Request $request, $user)
     {
-              if($User->type==1)
-              {
-
-                  return redirect('/ordersList');
-
-              }
-
-        if($User->type==0)
-        {
-           $DeliveryTypeValue =  DB::table('delivaries')->select('status')->where('user_id', $User->id)->get();
-           if($DeliveryTypeValue==1) {
-                      return redirect('/delivarieProfile');
-           }
-
+        if ( $user->type == 1 ) {
+            return redirect('/orders');
         }
+        if ( $user->type == 0 ) {
+
+////         $DeliveryTypeValue =  DB::table('delivaries')->where('user_id', $user->id)->first();
+/// if($DeliveryTypeValue->status==1) {
+////             dd('hello delivary');
+////                return redirect('/delivaryprofile');
+            return redirect('/ordersList');
+        }
+
+//        return redirect('/welcome');
+
+//        if($user->type== 0)
+//        {
+//            return redirect('/delivaryProfile');
+////         $DeliveryTypeValue =  DB::table('delivaries')->where('user_id', $user->id)->first();
+////         if($DeliveryTypeValue->status==1) {
+////
+////                 return redirect('/delivaryProfile');
+////          }
+////
+//      }
 
 
 

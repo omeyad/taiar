@@ -1,8 +1,10 @@
 @extends('layouts.temp')
 
+@section('pageTitle')
+قائمة أسماء الطيارين
+@endsection
 @section('content')
 
-    <h2>Laravel Ajax ToDo App</h2>
 
 
     <div>

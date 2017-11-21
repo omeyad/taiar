@@ -28,16 +28,30 @@ class ordersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function view()
     {
+
         $ordersList=DB::table('orders')
+
             ->join('suppliers', 'orders.supplier_forginKey', '=', 'suppliers.id')
+            ->join('users', 'users.id', '=', 'suppliers.user_id')
             ->join('DeliveryTypes', 'orders.delivary_type_forginKey', '=', 'DeliveryTypes.id')
-            ->select('DeliveryTypes.dname', 'suppliers.name', 'orders.description', 'orders.direction', 'orders.allowedTime')
+            ->select('DeliveryTypes.dname', 'users.name', 'orders.description', 'orders.direction', 'orders.allowedTime')
             ->get();
 
-        return view('order.ordersList')->with('ordersList' , $ordersList);
-
+       $user=DB::table('users')
+           ->where('id','=',Auth::id())
+           ->first();
+//       dd($user[0]);
+        
+        if($user->type==0) {
+            return view('order.ordersList')->with('ordersList', $ordersList);
+        }
 
     }
 

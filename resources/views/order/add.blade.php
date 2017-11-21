@@ -1,69 +1,89 @@
 @extends('layouts.temp')
 @section('pageTitle')
-قولنا تفاصيل اوردرك
+توصيلتك عندنا
 @endsection
+
 @section('content')
-				<!-- Search -->
-		<div class="advanced-search color" id="booking" style="margin-top:10%">
-			<div class="wrap">
-				 @if(Session::has('success'))
-                <div class="alert alert-success">
-                    {{Session::get('success')}}
-                </div>
-            @endif
-            <form class="form-horizontal" method="POST" action="{{ route('orders.store') }}">
-					<!-- Row -->
-					<div class="f-row" style="text-align:right">
-						<div class="form-group datepicker one-third">
-							<label for="dep-date">وقت التوصيل</label>
-							<input type="time"  class="form-control" id="dep-date" name="orderTime" value="{{ old('orderTime') }}" required/>
+	
+				<div class="three-fourth">
+					<form>
+						<header class="f-title color">تفاصيل الأوردر</header>
+						<div class="f-row">
+							<div class="one-half">
+								<label for="name">Name and surname</label>
+								<input type="text" id="name" />
+							</div>
+							<div class="one-half">
+								<label for="company">Company name</label>
+								<input type="text" id="company" />
+							</div>
 						</div>
-						<div class="form-group select one-third">
-							<label>طريقة التوصيل</label>
-                            <select id="dType"  class="form-control" name="dType"  required autofocus>
-
-                          @foreach($DeliveryTypeList as $DeliveryTypeItem)
-                            <option value="{{$DeliveryTypeItem->id}}">{{$DeliveryTypeItem->dname}}</option>
-                            @endforeach
-
-                        </select>
+						<div class="f-row">
+							<div class="one-half">
+								<label for="number">Phone number</label>
+								<input type="number" id="number" />
+							</div>
+							
+							<div class="one-half">
+								<label for="email">Email address</label>
+								<input type="email" id="email" />
+							</div>
 						</div>
-						<div class="form-group select one-third">
-							<label>العنوان</label>
-							  <input id="direction" type="text" class="form-control" name="direction" value="{{ old('direction') }}" required autofocus>
-
-                        @if ($errors->has('direction'))
-                            <span class="help-block">
-                                        <strong>{{ $errors->first('direction') }}</strong>
-                                    </span>
-                        @endif
+						
+						<header class="f-title color">1. leg</header>
+						
+			
+						<div class="f-row">
+							<div class="one-third">
+								<label for="dep-date">Pick up date and time</label>
+								<input type="text" id="dep-date" />
+							</div>
+							<div class="one-sixth">
+								<label for="passengers">passengers</label>
+								<input type="number" id="passengers" min="1" />
+							</div>
+							<div class="one-half">
+								<label for="vehicle">Select Vehicle type</label>
+								<select id="vehicle">
+									<option selected>Private car</option>
+									<option>Private minivan</option>
+									<option>Private coach</option>
+									<option>Shared minivan</option>
+									<option>Shared coach</option>
+									<option>Private limousine</option>
+									<option>Private helicopter</option>
+								</select>
+							</div>
 						</div>
-					</div>
-                					<row>
-
-                <div class="form-group datepicker one-third  col-md-6" style="float:right">
-							<label>وصف الاوردر</label>
-                    <textarea row=2 style="height:100px" id="orderName" type="text" class="form-control" name="orderName" value="{{ old('orderName') }}" required autofocus></textarea>
-
-                        @if ($errors->has('direction'))
-                            <span class="help-block">
-                                        <strong>{{ $errors->first('direction') }}</strong>
-                                    </span>
-                        @endif
-                </div>
-						<div class="form-group datepicker one-third  col-md-6" style="margin-top:5%">
-							<button type="submit" class="btn large black">اطلب</button>
+						<div class="f-row">
+							<div class="one-half">
+								<label for="pickuploc">Pick up location</label>
+								<input type="text" id="pickuploc" />
+							</div>
+							<div class="one-half">
+								<label for="dropoffloc">Drop off location</label>
+								<input type="text" id="dropoffloc" />
+							</div>
 						</div>
-						</row>
-					<!-- //Row -->
-					
-				
-				</form>
-			</div>
-		</div>
-		<!-- //Search -->
+						
+						<div class="f-row">
+							<div class="full-width">
+								<label for="extras">Additional information <span>(E.g. flight number, airport terminal, ship name, child/booster seats etc.)</span></label>
+								<textarea id="extras"></textarea>
+							</div>
+						</div>
+						
+						<div class="actions">
+							<a href="#" class="btn medium back">Add a leg</a>
+							<a href="#" class="btn medium back">Add return journey</a>
+							<a href="#" class="btn medium color right">Submit request</a>
+						</div>
+					</form>
+				</div>
+			
+<!--
 
-     {{--   <div class="panel-heading"><h2>تفاصيل اوردك</h2></div>
+        <div class="panel-heading"><h2>تفاصيل اوردك</h2></div>
 
         <div class="panel-body">
             @if(Session::has('success'))
@@ -150,6 +170,6 @@
             </form>
         </div>
 
+-->
 
---}}
 @endsection

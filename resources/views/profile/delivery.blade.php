@@ -19,6 +19,7 @@
                         <img src="{{asset('images/uploads/Unknown.png')}}">
                     </div>
                 </div>
+                    <h3 style="text-align: -webkit-center;">عدد الاروردرات : {{$ordersNo}}</h3>
                 <!-- //Widget -->
 
                 <!-- Widget -->
@@ -70,7 +71,7 @@
                         <div class="one-fourth">{{$DeliveryItem->birthDate}}</div>
 
                     </div>
-                    
+                   
 
                 </form>
         

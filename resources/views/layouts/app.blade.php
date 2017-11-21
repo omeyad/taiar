@@ -111,11 +111,11 @@
 
 
 
-                <li><a href="contact.html" title="Contact" style="font-size: 20px;color: white;">اتصل بنا </a></li>
+                <li><a href="/contact" title="Contact" style="font-size: 20px;color: white;">اتصل بنا </a></li>
 
 
-                <li><a href="http://themeforest.net/item/transfers-transport-and-car-hire-html-template/9366018?ref=themeenergy" title="Purchase" style="font-size: 20px;color:white"> من نحن </a></li>
-                <li><a href="index-2.html" title="" style="font-size: 20px;color: white;"> الصفحه الرئيسيه </a></li>
+                <li><a href="/about" title="Purchase" style="font-size: 20px;color:white"> من نحن </a></li>
+                <li><a href="/" title="" style="font-size: 20px;color: white;"> الرئيسية</a></li>
 
             </ul>
         </nav>
