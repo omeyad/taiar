@@ -28,7 +28,7 @@
             </aside>
             @foreach($Delivery as $DeliveryItem)
             <div class="three-fourth">
-                <form class="box readonly">
+                <form class="box readonly" >
                     <h3>معلومات شخصية</h3>
                     <div class="f-row">
                         <h3>الاسم</h3>

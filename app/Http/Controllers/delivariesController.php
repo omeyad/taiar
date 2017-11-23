@@ -105,14 +105,13 @@ class delivariesController extends Controller
     public function show($id)
     {
         //
-          
         $data=DB::table('delivaries')
             ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
             ->join('users', 'users.id', '=', 'delivaries.user_id')
-            ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')->where('delivaries.id','=',$id)
+            ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')//->where('delivaries.id','=',$id)
             ->get();
             $orders = DB::table('orders')
-                ->where('delivary_forginKey','=',$id)
+               // ->where('delivary_forginKey','=',$id)
                 ->count();
 
 
@@ -122,10 +121,20 @@ class delivariesController extends Controller
     }
     public function view()
     {
-        
-      
+        $data=DB::table('delivaries')
+            ->join('DeliveryTypes', 'delivaries.delivary_type_forginKey', '=', 'DeliveryTypes.id')
+            ->join('users', 'users.id', '=', 'delivaries.user_id')
+            ->select('DeliveryTypes.dname','users.name','users.email','delivaries.*')->where('delivaries.id','=',5)
+            ->get();
+        $orders = DB::table('orders')
+            ->where('delivary_forginKey','=',5)
+            ->count();
 
-        //
+
+        // $data=Delivary::orderBy('updated_at','desc')->get();
+
+        return view('profile.delivery',['Delivery'=>$data,'ordersNo'=>$orders]);
+
     }
        public function viewList()
     {

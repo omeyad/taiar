@@ -27,7 +27,8 @@ Route::resource('suppliers', 'suppliersController');
 Route::resource('orders', 'ordersController');
 Route::get('ordersList', 'ordersController@view');
 Route::get('delivaryList', 'delivariesController@viewList');
-Route::get('delivaryProfile', 'delivariesController@view');
+Route::get('/delivaryProfile','delivariesController@view');
+Route::resource('admin', 'adminProfileController');
 
 
 

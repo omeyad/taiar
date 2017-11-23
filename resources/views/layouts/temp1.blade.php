@@ -23,14 +23,15 @@
     <link href="{{ asset('css/bootstrap-rtl.min.css') }}" rel="stylesheet">
 
 
-
     <script src="{{asset('js/e808bf9397.js')}}"></script>
-
+{!! Charts::styles() !!}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="{{asset('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')}}"></script>
     <script src="{{asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
+    <!--<script src="{{asset('js/canvasjs.min.js')}}"></script>-->
+
     <![endif]-->
 </head>
 
@@ -231,6 +232,8 @@
     </div>
 </div>
 <script src="{{asset('js/styler.js')}}"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+
 </body>
 
 <!-- Mirrored from themeenergy.com/themes/html/transfers/register.html by HTTrack Website Copier/3.x [XR&CO'2010], Sat, 18 Nov 2017 09:04:42 GMT -->
