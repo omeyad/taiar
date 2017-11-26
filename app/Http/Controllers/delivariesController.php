@@ -209,11 +209,12 @@ class delivariesController extends Controller
     public function destroy($id)
     {
         //
-      
-      
+
         $data=DB::table('users')->where(
             'id','=' ,$id
+
         )->delete();
+
         return back();
 
     }

@@ -29,6 +29,8 @@ Route::get('ordersList', 'ordersController@view');
 Route::get('delivaryList', 'delivariesController@viewList');
 Route::get('/delivaryProfile','delivariesController@view');
 Route::resource('admin', 'adminProfileController');
+Route::get('delivaryType', 'adminProfileController@viewList');
+
 
 
 
